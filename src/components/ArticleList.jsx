@@ -49,7 +49,7 @@ const ArticleList = ({ articles }) => {
               className="w-full h-48 object-cover mb-4"
             />
             <h2 className="text-xl font-bold mb-2">{article.title}</h2>
-            <p>{article.description}</p>
+            <p className='hover:underline'>{article.description}</p>
           </Link>
         </div>
       ))}
