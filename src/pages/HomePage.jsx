@@ -28,7 +28,7 @@ const HomePage = () => {
 
      <div className='flex  items-center flex-wrap justify-evenly w-full
        '>
-<div>      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAcWsN_w61HOLmzDXFFN-Q_p4JZSefLnk0Gg&s" alt=""  /></div>
+<div>      <img src="https://w1.pngwing.com/pngs/872/719/png-transparent-tv-nepal-news-24-television-television-channel-nepal-television-live-television-streaming-television.png" alt="" className='w-[300px]  h-[100px]'  /></div>
         
      <SearchBar />
       <Link to="/my-fav">
