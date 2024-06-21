@@ -1,0 +1,24 @@
+/* ./src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* index.css */
+:root {
+  --bg-color-light: #ffffff;
+  --bg-color-dark: #1a202c;
+}
+
+.light {
+  --bg-color: var(--bg-color-light);
+  color: black;
+}
+
+.dark {
+  --bg-color: var(--bg-color-dark);
+  color: white;
+}
+
+body {
+  background-color: var(--bg-color);
+}
