@@ -17,7 +17,7 @@ const HomePage = () => {
 
   const dispatch = useDispatch();
   const { articles, status, error, category, page } = useSelector((state) => state.news);
-  console.log(articles)
+  
   useEffect(() => {
     dispatch(getArticles({ category, page }));
   

@@ -12,7 +12,7 @@ export const fetchArticles = async (category = '', page = 1) => {
   // Check if data is cached
   const cachedData = JSON.parse(localStorage.getItem(cacheKey));
   if (cachedData) {
-    console.log('Returning cached data:', cachedData);
+   
     return cachedData;
   }
 
