@@ -1,7 +1,6 @@
-
-
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setCategory, setPage, getArticles } from '../store/newsSlice';
+
 const categories = [
   'Business',
   'Technology',
@@ -14,12 +13,11 @@ const categories = [
   'World',
   'Finance',
   'Environment',
-  
 ];
-
 
 const CategoryFilter = () => {
   const dispatch = useDispatch();
+  const selectedCategory = useSelector((state) => state.news.category);
 
   const handleCategoryChange = (category) => {
     dispatch(setCategory(category));
@@ -33,7 +31,9 @@ const CategoryFilter = () => {
         <button
           key={category}
           onClick={() => handleCategoryChange(category.toLowerCase())}
-          className="px-4 py-2 m-5 bg-red-500 text-white rounded hover:bg-red-700"
+          className={`px-4 py-2 m-5 rounded hover:bg-red-500 ${
+            selectedCategory === category.toLowerCase() ? 'bg-red-500 text-white' : '  border border-red-700'
+          }`}
         >
           {category}
         </button>

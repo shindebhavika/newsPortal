@@ -69,7 +69,7 @@ const HomePage = () => {
 }
       {status === 'failed' && <p>Error: {error}</p>}
       {status === 'succeeded' && <ArticleList articles={articles} />}
-      <Pagination />
+     {!error && <Pagination></Pagination>}
     </div>
   );
 };
