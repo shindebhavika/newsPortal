@@ -1,0 +1,2 @@
+# newsPortal
+react,redux
