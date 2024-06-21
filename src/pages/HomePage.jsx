@@ -11,16 +11,17 @@ import SearchBar from '../components/SearchBar';
 const HomePage = () => {
   const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')) || []);
 
+  // Only set favorites once when the component mounts
   useEffect(() => {
-    setFavorites(JSON.parse(localStorage.getItem('favorites')) || []);
-  }, [favorites]);
+    const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    setFavorites(storedFavorites);
+  }, []); // Empty dependency array ensures this runs only once
 
   const dispatch = useDispatch();
   const { articles, status, error, category, page } = useSelector((state) => state.news);
   
   useEffect(() => {
     dispatch(getArticles({ category, page }));
-  
   }, [dispatch, category, page]);
 
   return (
@@ -28,7 +29,7 @@ const HomePage = () => {
 
      <div className='flex  items-center flex-wrap justify-evenly w-full
        '>
-<div>      <img src="https://w1.pngwing.com/pngs/872/719/png-transparent-tv-nepal-news-24-television-television-channel-nepal-television-live-television-streaming-television.png" alt="" className='w-[300px]  h-[100px]'  /></div>
+<div>      <img src="https://thumbs.dreamstime.com/b/news-portal-text-quote-concept-background-237679669.jpg" alt="" className='w-[130px]  h-[130px]  rounded-full'  /></div>
         
      <SearchBar />
       <Link to="/my-fav">

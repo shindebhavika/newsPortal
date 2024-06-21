@@ -6,7 +6,7 @@ const BASE_URL = 'https://newsapi.org/v2';
 
 const CACHE_KEY_PREFIX = 'newsAPI_cache_';
 
-export const fetchArticles = async (category = '', page = 1) => {
+export const fetchArticles = async (category = 'general', page = 1) => {
   const cacheKey = `${CACHE_KEY_PREFIX}${category}_${page}`;
 
   // Check if data is cached
@@ -21,7 +21,7 @@ export const fetchArticles = async (category = '', page = 1) => {
   try {
     const response = await axios.get(url);
     const data = response.data;
-
+console.log("send")
     // Update cache with fresh data
     localStorage.setItem(cacheKey, JSON.stringify(data));
 
