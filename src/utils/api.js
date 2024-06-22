@@ -1,13 +1,10 @@
-// src/utils/api.js
-
-import axios from 'axios';
-
 const API_KEY = '71e9044ea5cb447e95f1148d5528ef3f';
 const BASE_URL = 'https://newsapi.org/v2';
 
 export const fetchArticles = async (category = 'general', page = 1, query = '') => {
   let url;
-console.log("request")
+  console.log("request");
+
   if (query) {
     url = `${BASE_URL}/everything?q=${query}&apiKey=${API_KEY}&page=${page}`;
   } else {
@@ -15,8 +12,20 @@ console.log("request")
   }
 
   try {
-    const response = await axios.get(url);
-    return response.data;
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Connection': 'keep-alive'
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
   } catch (error) {
     console.error('Error fetching data:', error);
     throw error; // Propagate the error up the call chain
