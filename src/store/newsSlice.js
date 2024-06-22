@@ -7,7 +7,12 @@ export const getArticles = createAsyncThunk(
   'news/getArticles',
   async ({ category, page, query }) => {
     const data = await fetchArticles(category, page, query);
-    return data;
+    if(data){
+      return data
+    }else{
+      return  [];
+    }
+    
   }
 );
 
