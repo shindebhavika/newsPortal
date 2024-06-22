@@ -3,7 +3,7 @@ const BASE_URL = 'https://gnews.io/api/v4';
 
 export const fetchArticles = async (category = 'general', page = 1, query = '') => {
   let url;
-  console.log("request");
+  // console.log("request");
 
   if (query) {
     url = `${BASE_URL}/search?q=${query}&token=${API_KEY}&lang=en&max=10&page=${page}`;
@@ -18,7 +18,7 @@ export const fetchArticles = async (category = 'general', page = 1, query = '') 
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     return data;
   } catch (error) {
     console.error('Error fetching data:', error);
