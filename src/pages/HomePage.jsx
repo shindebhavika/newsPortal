@@ -1,5 +1,3 @@
-// src/pages/HomePage.jsx
-
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -23,6 +21,7 @@ const HomePage = () => {
 
   useEffect(() => {
     dispatch(getArticles({ category, page }));
+
   }, [dispatch, category, page]);
 
   return (

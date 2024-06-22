@@ -1,7 +1,5 @@
-
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 const ArticleList = ({ articles }) => {
@@ -27,12 +25,17 @@ const ArticleList = ({ articles }) => {
     setFavorites(JSON.parse(localStorage.getItem('favorites')) || []);
   }, []);
 
+
+
   const filteredArticles = articles.filter(article => 
-    article.url && article.urlToImage && article.title && article.description
+    article.image && article.url && article.title && article.description
   );
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {filteredArticles.length === 0 && (
+        <div className="text-center col-span-full">No articles found.</div>
+      )}
       {filteredArticles.map((article) => (
         <div key={article.url} className="border p-4 rounded shadow relative">
           <div className="absolute top-4 right-4 text-xl cursor-pointer mt-3">
@@ -44,7 +47,7 @@ const ArticleList = ({ articles }) => {
           </div>
           <Link to={`/article/${encodeURIComponent(article.url)}`}>
             <img
-              src={article.urlToImage}
+              src={article.image}
               alt={article.title}
               className="w-full h-48 object-cover mb-4"
             />
@@ -53,7 +56,6 @@ const ArticleList = ({ articles }) => {
           </Link>
         </div>
       ))}
-      
     </div>
   );
 };
