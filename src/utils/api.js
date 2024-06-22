@@ -1,31 +1,22 @@
+// src/utils/api.js
 
 import axios from 'axios';
 
 const API_KEY = '71e9044ea5cb447e95f1148d5528ef3f';
 const BASE_URL = 'https://newsapi.org/v2';
 
-const CACHE_KEY_PREFIX = 'newsAPI_cache_';
-
-export const fetchArticles = async (category = 'general', page = 1) => {
-  const cacheKey = `${CACHE_KEY_PREFIX}${category}_${page}`;
-
-  // Check if data is cached
-  const cachedData = JSON.parse(localStorage.getItem(cacheKey));
-  if (cachedData) {
-   
-    return cachedData;
+export const fetchArticles = async (category = 'general', page = 1, query = '') => {
+  let url;
+console.log("request")
+  if (query) {
+    url = `${BASE_URL}/everything?q=${query}&apiKey=${API_KEY}&page=${page}`;
+  } else {
+    url = `${BASE_URL}/top-headlines?country=us&category=${category}&page=${page}&apiKey=${API_KEY}`;
   }
 
-  // Fetch fresh data from API
-  const url = `${BASE_URL}/top-headlines?country=us&category=${category}&page=${page}&apiKey=${API_KEY}`;
   try {
     const response = await axios.get(url);
-    const data = response.data;
-console.log("send")
-    // Update cache with fresh data
-    localStorage.setItem(cacheKey, JSON.stringify(data));
-
-    return data;
+    return response.data;
   } catch (error) {
     console.error('Error fetching data:', error);
     throw error; // Propagate the error up the call chain

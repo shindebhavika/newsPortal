@@ -10,9 +10,8 @@ const categories = [
   'Health',
   'General',
   'Politics',
-  'World',
-  'Finance',
-  'Environment',
+
+  
 ];
 
 const CategoryFilter = () => {

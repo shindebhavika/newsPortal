@@ -1,11 +1,12 @@
+// src/store/newsSlice.js
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import {fetchArticles} from '../utils/api'
+import { fetchArticles } from '../utils/api';
 
 export const getArticles = createAsyncThunk(
   'news/getArticles',
-  async ({ category, page }) => {
-    const data = await fetchArticles(category, page);
+  async ({ category, page, query }) => {
+    const data = await fetchArticles(category, page, query);
     return data;
   }
 );
